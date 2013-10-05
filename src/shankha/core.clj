@@ -33,6 +33,31 @@
 (defn get-builtins []
   (split-output (bi "compgen -b")))
 
+(defn- clojurize
+  [s]
+  (->> s
+       (map #(if (Character/isUpperCase %) (str "-" %) %))
+       (apply str)
+       lower-case))
+
+(defn- fn-impls
+  "Returns a list of function implementations corresponding to all
+methods and their arities on klass, excluding any methods in
+exclude-names."
+  [exclude-names klass]
+  (for [[name arities] (names-arities (methods-in klass))
+        :when (not (exclude-names name))]
+    (let [args (map #(vec (take % (repeatedly gensym))) arities)
+          clj-name (clojurize name)]
+      `(defn ~(symbol clj-name)
+         ~@(map (fn [argv] (list argv (list* '. klass (symbol name) argv)))
+                args)))))
+
+(defn- install-fns
+  "Generates proxy functions for klass and installs them in this namespace."
+  [klass]
+  (eval (cons 'do (fn-impls exclusions klass))))
+
 (defn -main
   ""
   [& args]
