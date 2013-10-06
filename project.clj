@@ -5,8 +5,13 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.4.0"]]
   :main shankha.core
+  :repl-options
+    {:prompt (fn [ns]
+               (str "\033[1;32m"
+                    ns "=>"
+                    "\033[0m "))}
   :profiles
-  {:testing
-    {:dependencies [[ring-mock "0.1.5"]
-                    [clj-http-fake "0.4.1"]
-                    [midje "1.5.1"]]}})
+    {:testing
+      {:dependencies [[ring-mock "0.1.5"]
+                      [clj-http-fake "0.4.1"]
+                      [midje "1.5.1"]]}})
