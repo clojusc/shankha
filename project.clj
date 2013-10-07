@@ -3,7 +3,8 @@
   :url "https://github.com/oubiwann/shankha"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.5.1"]]
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.jruby.ext.posix/jna-posix "1.0.3"]]
   :aot [shankha.core]
   :main shankha.core
   :repl-options
