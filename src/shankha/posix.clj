@@ -10,7 +10,7 @@
 
 (def handler
   (proxy [POSIXHandler]
-      []
+    []
     (error [error extra]
       (println "error:" error extra))
     (unimplementedError [methodname]
@@ -42,9 +42,9 @@
 (defn is-daemon? []
   (System/getProperty "leiningen.daemon"))
 
-(defn chdirToRoot []
-  (.chdir C "/")
-  (System/setProperty "user.dir" "/"))
+(defn cd [directory]
+  (.chdir C directory)
+  (System/setProperty "user.dir" directory))
 
 (defn get-current-pid []
   (.getpid C))
