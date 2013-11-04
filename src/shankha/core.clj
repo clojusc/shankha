@@ -1,48 +1,35 @@
 (ns shankha.core
   (:require [clojure.java.shell :as shell]
             [clojure.set :as set]
-            [clojure.string :as string])
+            [clojure.string :as string]
+            [shankha.posix :as posix]
+            [shankha.util :as util])
   (:gen-class))
 
-
-(defn in?
-  "Given a sequence and a potential element of that sequence, determine if it
-  is, in fact, part of that sequence."
-  [sequence item]
-  (if (empty? sequence)
-    false
-    (reduce
-      #(or %1 %2)
-      (map
-        #(= %1 item)
-        sequence))))
-
-(defn not-in?
-  ""
-  [sequence item]
-  (not (in? sequence item)))
-
-(defn get-output [result]
-  (result :out))
 
 (defn parse-args
   ""
   [args]
   )
 
+(defn get-cmd
+  ""
+  [command args]
+  (util/get-output
+    (apply
+      shell/sh
+      (conj args command))))
+
 (defn cmd
   "Run the given command, an executables available in $PATH."
   [command & args]
   (print
-    (get-output
-      (apply
-        shell/sh
-        (conj args command)))))
+    (get-cmd command (or args []))))
 
 (defn get-bi
   ""
   [command]
-  (get-output
+  (util/get-output
     (shell/sh "bash" :in command)))
 
 (defn bi
@@ -52,40 +39,40 @@
     (print
       (get-bi command))))
 
-(defn split-output [result]
-  (string/split result #"\n"))
-
-(defn get-commands []
+(defn get-all-commands []
   "Gets all executables available in $PATH."
   (sort
-    (split-output
+    (util/split-output
       (get-bi "compgen -c"))))
 
-(defn get-builtins []
+(defn get-all-builtins []
   "Get all bash builtins availale."
   (sort
-    (split-output
+    (util/split-output
       (get-bi "compgen -b"))))
 
 (defn install-cmds
   [names & exclusions]
   (letfn [(placeholder [cmd-name]
             (fn [& args]
-              (apply cmd (conj args cmd-name))))]
+              (apply
+                cmd
+                (conj
+                  (util/check-args args)
+                  cmd-name))))]
     (doseq [cmd-name names
-            :when (not-in? (first exclusions) cmd-name)]
+            :when (util/not-in? (first exclusions) cmd-name)]
       (intern
         *ns*
         (symbol cmd-name)
         (placeholder cmd-name)))))
 
-(defn get-ns-keywords
-  ""
-  [name-space]
-  (into
-    #{}
-    (keys
-      (ns-map name-space))))
+(defn install-custom
+  []
+  (intern
+    *ns*
+    (symbol "cd")
+    posix/cd))
 
 (defn get-excludes
   ""
@@ -93,12 +80,23 @@
   (map
     str
     (set/union
-      (get-ns-keywords *ns*)
-      (get-ns-keywords 'clojure.core)
-      (get-ns-keywords 'clojure.repl))))
+      (util/get-char-range 0 65)
+      (util/get-char-range (+ 65 26) 97)
+      (util/get-ns-keywords *ns*)
+      (util/get-ns-keywords 'clojure.core)
+      (util/get-ns-keywords 'clojure.repl))))
 
 (defn -main
   ""
   [& args]
-  (install-cmds (get-commands) (get-excludes)))
-  ;(install-cmds ["ls" "dir" "touch" "mkdir"]))
+  ;(install-cmds (get-all-commands) (get-excludes)))
+  (install-cmds ["pwd" "cd" "ls" "dir" "touch" "mkdir"] ["dir"])
+  #_(let [excludes (get-excludes)]
+    (doseq [command (get-all-commands)]
+      (println (str "Installing '" command "' ..."))
+      (install-cmds [command] excludes)
+    ))
+  (install-custom)
+  )
+
+;(for [x (range 100000000) y (range 1000000) :while (< y x)] [x y])
