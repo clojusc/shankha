@@ -6,11 +6,11 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [com.sun.jna/jna "3.0.9"]
                  [org.jruby.ext.posix/jna-posix "1.0.3"]]
-  :aot [shankha.core]
-  :main shankha.core
+  :aot [clojusc.shankha]
+  :main clojusc.shankha
   :repl-options
     {:welcome (println "Welcome to Shankha, a Clojure shell.")
-     :init (shankha.core/-main)
+     :init (clojusc.shankha/-main)
      :prompt (fn [ns]
                (let [light-green "\33[1;32;40m"
                      dark-green "\33[0;32;40m"
