@@ -1,4 +1,4 @@
-(defproject shankha "0.2.0-SNAPSHOT"
+(defproject clojusc/shankha "0.2.0-SNAPSHOT"
   :description "A Divine Shell"
   :url "https://github.com/oubiwann/shankha"
   :license {:name "Apache License, Version 2.0"
