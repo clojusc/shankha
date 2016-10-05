@@ -1,11 +1,10 @@
-(ns shankha.core
+(ns clojusc.shankha
   (:require [clojure.java.shell :as shell]
             [clojure.set :as set]
             [clojure.string :as string]
-            [shankha.posix :as posix]
-            [shankha.util :as util])
+            [clojusc.shankha.posix :as posix]
+            [clojusc.shankha.util :as util])
   (:gen-class))
-
 
 (defn parse-args
   ""

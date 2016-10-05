@@ -1,8 +1,7 @@
-(ns shankha.util
+(ns clojusc.shankha.util
   (:require [clojure.java.shell :as shell]
             [clojure.set :as set]
             [clojure.string :as string]))
-
 
 (defn in?
   "Given a sequence and a potential element of that sequence, determine if it
