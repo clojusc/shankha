@@ -1,4 +1,4 @@
-(ns shankha.core-test
+(ns clojusc.shankha-test
   (:use clojure.test
         shankha.core))
 
