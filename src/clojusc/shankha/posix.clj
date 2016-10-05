@@ -1,9 +1,8 @@
-(ns shankha.posix
+(ns clojusc.shankha.posix
   (:import java.io.FileOutputStream
            (org.jruby.ext.posix POSIXFactory
                                 POSIXHandler))
   (:require [clojure.java.io :refer (reader)]))
-
 
 (defn throwf [& message]
   (throw (Exception. (apply format message))))
