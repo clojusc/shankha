@@ -2,6 +2,7 @@
   (:require [clojure.java.shell :as shell]
             [clojure.set :as set]
             [clojure.string :as string]
+            [clojusc.shankha.posix :as posix]
             [clojusc.shankha.util :as util])
   (:gen-class))
 
@@ -74,7 +75,7 @@
   (intern
     *ns*
     (symbol "cd")
-    util/cd))
+    posix/cd))
 
 (defn get-excludes
   ""
