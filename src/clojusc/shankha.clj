@@ -1,4 +1,4 @@
-(ns shankha.core
+(ns clojusc.shankha
   (:require [clojure.java.shell :as shell]
             [clojure.set :as set]
             [clojure.string :as string]
