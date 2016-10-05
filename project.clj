@@ -1,6 +1,6 @@
 (defproject clojusc/shankha "0.2.0-SNAPSHOT"
   :description "A Divine Shell"
-  :url "https://github.com/oubiwann/shankha"
+  :url "https://github.com/clojusc/shankha"
   :license {:name "Apache License, Version 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0"}
   :dependencies [[org.clojure/clojure "1.5.1"]
