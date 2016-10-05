@@ -3,11 +3,6 @@
             [clojure.set :as set]
             [clojure.string :as string]))
 
-(defn cd
-  ""
-  [dir]
-  (System/setProperty "user.dir" dir))
-
 (defn in?
   "This function returns true if the provided seqenuce contains the given
   elment."
