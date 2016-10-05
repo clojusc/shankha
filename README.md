@@ -10,7 +10,8 @@ Wouldn't it be nice to replace bash with a Clojure shell?
 
 ## License
 
-Copyright © 2013-2016 Clojure-Aided Enrichment Center
+Copyright © 2013, Duncan McGreggor
+Copyright © 1016, Clojure-Aided Enrichment Center
 
 Apache License, Version 2.0.
 
