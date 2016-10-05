@@ -3,6 +3,9 @@
             [clojure.set :as set]
             [clojure.string :as string]))
 
+(defn cd [dir]
+  (System/setProperty "user.dir" dir))
+
 (defn in?
   "Given a sequence and a potential element of that sequence, determine if it
   is, in fact, part of that sequence."
