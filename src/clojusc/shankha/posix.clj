@@ -1,13 +1,12 @@
 (ns clojusc.shankha.posix
-  (:import [jnr.posix JavaPOSIX POSIXFactory]))
+  (:import [jnr.posix.POSIXFactory]))
 
-(defn new []
-  (-> (POSIXFactory.)
-      (JavaPOSIX.)))
+(defn new-posix []
+  (jnr.posix.POSIXFactory/getJavaPOSIX))
 
 (defn cd
   ([dir]
-    (cd (new) dir))
+    (cd (new-posix) dir))
   ([posix dir]
-    (.chdir posix)
+    (.chdir posix dir)
     (System/setProperty "user.dir" dir)))
