@@ -3,9 +3,7 @@
   :url "https://github.com/clojusc/shankha"
   :license {:name "Apache License, Version 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0"}
-  :dependencies [[org.clojure/clojure "1.5.1"]
-                 [com.sun.jna/jna "3.0.9"]
-                 [org.jruby.ext.posix/jna-posix "1.0.3"]]
+  :dependencies [[org.clojure/clojure "1.8.0"]]
   :aot [clojusc.shankha]
   :main clojusc.shankha
   :repl-options
