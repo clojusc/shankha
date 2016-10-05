@@ -1,4 +1,4 @@
-(defproject shankha "0.1.0-SNAPSHOT"
+(defproject shankha "0.2.0-SNAPSHOT"
   :description "A Divine Shell"
   :url "https://github.com/oubiwann/shankha"
   :license {:name "Apache License, Version 2.0"
@@ -41,8 +41,11 @@
                       dark-yellow
                       " => "
                       end-color)))}
-  :profiles
-    {:testing
-      {:dependencies [[ring-mock "0.1.5"]
-                      [clj-http-fake "0.4.1"]
-                      [midje "1.5.1"]]}})
+  :profiles {
+    :dev {
+      :dependencies [[org.clojure/tools.namespace "0.2.11"]
+                     [slamhound "1.5.5"]]
+      :plugins [[lein-kibit "0.1.2"]
+                [jonase/eastwood "0.2.3"]]
+      :aliases {"slamhound" ["run" "-m" "slam.hound"]}
+      :source-paths ["dev-resources/src"]}})
