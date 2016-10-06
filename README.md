@@ -1,4 +1,5 @@
-# शंख Śaṇkha [![Build Status][travis-badge]][travis][![Dependencies Status][deps-badge]][deps][![Clojars Project][clojars-badge]][clojars][![Clojure version][clojure-v]](project.clj)
+# शंख Śaṇkha 
+[![Build Status][travis-badge]][travis][![Dependencies Status][deps-badge]][deps][![Clojars Project][clojars-badge]][clojars][![Clojure version][clojure-v]](project.clj)
 
 *A Divine Shell*
 
@@ -41,6 +42,7 @@ Meson API Reference docs are available here:
 ## License
 
 Copyright © 2013, Duncan McGreggor
+
 Copyright © 1016, Clojure-Aided Enrichment Center
 
 Apache License, Version 2.0.
