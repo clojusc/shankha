@@ -1,7 +1,6 @@
 (ns clojusc.shankha
   (:require [clojure.java.shell :as shell]
             [clojure.set :as set]
-            [clojure.string :as string]
             [clojusc.shankha.cmd :as cmd]
             [clojusc.shankha.posix :as posix]
             [clojusc.shankha.util :as util])
