@@ -4,9 +4,39 @@
 
 [![][logo]][logo-large]
 
-## About
+#### Contents
+
+* [About](#about-)
+* [Dependencies](#dependencies-)
+* [Usage](#usage-)
+* [Documentation](#documentation-)
+* [License](#license-)
+
+
+## About [&#x219F;](#contents)
 
 Wouldn't it be nice to replace bash with a Clojure shell?
+
+
+## Dependencies [&#x219F;](#contents)
+
+TBD
+
+
+## Usage [&#x219F;](#contents)
+
+Start up the REPL (and be sure to have a running Mesos deployment), then:
+
+```clj
+
+```
+
+
+## Documentation [&#x219F;](#contents)
+
+Meson API Reference docs are available here:
+ * [http://clojusc.github.io/shankha/](http://clojusc.github.io/shankha/)
+
 
 ## License
 
