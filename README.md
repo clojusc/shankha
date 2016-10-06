@@ -43,7 +43,7 @@ Meson API Reference docs are available here:
 
 Copyright © 2013, Duncan McGreggor
 
-Copyright © 1016, Clojure-Aided Enrichment Center
+Copyright © 2016, Clojure-Aided Enrichment Center
 
 Apache License, Version 2.0.
 
