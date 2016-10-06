@@ -37,19 +37,22 @@
     (print
       (get-bi command))))
 
-(defn get-all-commands []
+(defn get-all-commands
   "Gets all executables available in $PATH."
+  []
   (sort
     (util/split-output
       (get-bi "compgen -c"))))
 
-(defn get-all-builtins []
+(defn get-all-builtins
   "Get all bash builtins availale."
+  []
   (sort
     (util/split-output
       (get-bi "compgen -b"))))
 
 (defn install-cmds
+  ""
   [names & exclusions]
   (letfn [(placeholder [cmd-name]
             (fn [& args]
@@ -66,6 +69,7 @@
         (placeholder cmd-name)))))
 
 (defn install-custom
+  ""
   []
   (intern
     *ns*
@@ -92,9 +96,6 @@
   #_(let [excludes (get-excludes)]
     (doseq [command (get-all-commands)]
       (println (str "Installing '" command "' ..."))
-      (install-cmds [command] excludes)
-    ))
-  (install-custom)
-  )
+      (install-cmds [command] excludes)))
+  (install-custom))
 
-;(for [x (range 100000000) y (range 1000000) :while (< y x)] [x y])

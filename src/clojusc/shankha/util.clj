@@ -3,51 +3,50 @@
             [clojure.set :as set]
             [clojure.string :as string]))
 
-(defn cd [dir]
+(defn cd
+  ""
+  [dir]
   (System/setProperty "user.dir" dir))
 
 (defn in?
-  "Given a sequence and a potential element of that sequence, determine if it
-  is, in fact, part of that sequence."
-  [sequence item]
-  (if (empty? sequence)
-    false
-    (reduce
-      #(or %1 %2)
-      (map
-        #(= %1 item)
-        sequence))))
+  "This function returns true if the provided seqenuce contains the given
+  elment."
+  [seq elm]
+  (some #(= elm %) seq))
 
 (defn not-in?
   ""
   [sequence item]
   (not (in? sequence item)))
 
-(defn get-output [result]
+(defn get-output
+  ""
+  [result]
   (result :out))
 
-(defn split-output [result]
+(defn split-output
+  ""
+  [result]
   (string/split result #"\n"))
 
 (defn get-ns-keywords
   ""
   [name-space]
-  (into
-    #{}
-    (keys
-      (ns-map name-space))))
+  (-> name-space
+      (ns-map)
+      (keys)
+      (set)))
 
 (defn get-char-range
   ""
   [start stop]
-  (into
-    #{}
-    (map
-      (comp str char)
-      (range start stop))))
+  (->> (range start stop)
+       (map (comp str char))
+       (set)))
 
-(defn check-arg [arg]
+(defn check-arg
   "Let's support using keywords for flags."
+  [arg]
   ;; For example, the following are equivalent:
   ;;   $ ls -alrth
   ;; and:
@@ -58,5 +57,7 @@
     (keyword? arg) (str "-" (name arg))
     :else arg))
 
-(defn check-args [args]
+(defn check-args
+  ""
+  [args]
   (map check-arg args))
