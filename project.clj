@@ -7,16 +7,16 @@
   :aot [clojusc.shankha]
   :main clojusc.shankha
   :repl-options
-    {:welcome (println "Welcome to Shankha, a Clojure shell.")
+    {:welcome (println "\nWelcome to Shankha, a Clojure shell.\n")
      :init (clojusc.shankha/-main)
      :prompt (fn [ns]
-               (let [light-green "\33[1;32;40m"
-                     dark-green "\33[0;32;40m"
-                     red "\33[0;31;40m"
-                     blue "\33[1;34;40m"
-                     dark-yellow "\33[0;33;40m"
+               (let [light-green "\33[1;32m"
+                     dark-green "\33[0;32m"
+                     red "\33[0;31m"
+                     blue "\33[1;34m"
+                     dark-yellow "\33[0;33m"
                      end-color "\33[m"]
-                 (str light-green
+                 (str dark-green
                       (clojure.string/trim-newline
                         ((clojure.java.shell/sh "bash" :in "echo $USER") :out))
                       "@"
@@ -29,12 +29,8 @@
                       blue
                       ((clojure.java.shell/sh "pwd") :out)
                       end-color
-                      dark-green
-                      (clojure.string/trim-newline
-                        ((clojure.java.shell/sh "date" "+%a %d %b %H:%M:%S ") :out))
-                      end-color
                       blue
-                      "(" ns ")"
+                      ns
                       end-color
                       dark-yellow
                       " => "
