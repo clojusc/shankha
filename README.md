@@ -39,7 +39,7 @@ Meson API Reference docs are available here:
  * [http://clojusc.github.io/shankha/](http://clojusc.github.io/shankha/)
 
 
-## License
+## License [&#x219F;](#contents)
 
 Copyright © 2013, Duncan McGreggor
 
