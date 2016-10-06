@@ -28,7 +28,7 @@ TBD
 
 Start up the REPL:
 
-```clj
+```
 $ lein repl
 nREPL server started on port 33812 on host 127.0.0.1 - nrepl://127.0.0.1:33812
 REPL-y 0.3.7, nREPL 0.2.12
@@ -47,6 +47,8 @@ sizes:
 ```clj
 oubiwann@mndltl01 /home/oubiwann/lab/clojure/clojusc/shankha
 clojusc.shankha => (ls :alrth)
+```
+```
 total 80K
 -rw-rw-r--  1 oubiwann oubiwann  128 Oct  5 09:38 .gitignore
 drwxrwxr-x  2 oubiwann oubiwann 4.0K Oct  5 09:38 resources
@@ -62,8 +64,6 @@ drwxrwxr-x  8 oubiwann oubiwann 4.0K Oct  5 21:57 .git
 -rw-rw-r--  1 oubiwann oubiwann 2.0K Oct  5 21:58 README.md
 drwxrwxr-x  9 oubiwann oubiwann 4.0K Oct  5 21:58 .
 nil
-oubiwann@mndltl01 /home/oubiwann/lab/clojure/clojusc/shankha
-clojusc.shankha =>
 ```
 
 ## Documentation [&#x219F;](#contents)
