@@ -1,8 +1,8 @@
 (ns clojusc.shankha
-  (:require [clojure.java.shell :as shell]
-            [clojure.set :as set]
+  (:require [clojure.set :as set]
             [clojusc.shankha.cmd :as cmd]
             [clojusc.shankha.posix :as posix]
+            [clojusc.shankha.prompt :as prompt]
             [clojusc.shankha.util :as util])
   (:gen-class))
 
@@ -28,11 +28,13 @@
 
 (defn -main
   ""
-  [& args]
-  ;(install-cmds (get-all-commands) (get-excludes)))
-  (cmd/install-cmds ["pwd" "cd" "ls" "dir" "touch" "mkdir"] ["dir"])
-  #_(let [excludes (get-excludes)]
-    (doseq [command (cmd/get-all-commands)]
-      (println (str "Installing '" command "' ..."))
-      (cmd/install-cmds [command] excludes)))
-  (install-custom))
+  ([]
+    ;(install-cmds (get-all-commands) (get-excludes)))
+    (cmd/install-cmds ["pwd" "cd" "ls" "dir" "touch" "mkdir"] ["dir"])
+    #_(let [excludes (get-excludes)]
+      (doseq [command (cmd/get-all-commands)]
+        (println (str "Installing '" command "' ..."))
+        (cmd/install-cmds [command] excludes)))
+    (install-custom))
+  ([ns]
+    (prompt/get-prompt ns)))

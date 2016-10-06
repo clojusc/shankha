@@ -19,6 +19,32 @@
   [result]
   (result :out))
 
+(defn ->file
+  ""
+  [^String filename]
+  (clojure.java.io/file filename))
+
+(defn expand-user-home
+  ""
+  [^String filename]
+  (.replaceFirst filename "^~" (System/getProperty "user.home")))
+
+(defn get-abs-path
+  ""
+  [^String path]
+  (-> path
+      (expand-user-home)
+      (->file)
+      (.getAbsoluteFile)
+      (.getCanonicalPath)))
+
+(defn get-cwd
+  ""
+  []
+  (-> "user.dir"
+      (System/getProperty)
+      (get-abs-path)))
+
 (defn split-output
   ""
   [result]

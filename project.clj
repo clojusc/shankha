@@ -10,32 +10,7 @@
   :repl-options
     {:welcome (println "\nWelcome to Shankha, a Clojure shell.\n")
      :init (clojusc.shankha/-main)
-     :prompt (fn [ns]
-               (let [light-green "\33[1;32m"
-                     dark-green "\33[0;32m"
-                     red "\33[0;31m"
-                     blue "\33[1;34m"
-                     dark-yellow "\33[0;33m"
-                     end-color "\33[m"]
-                 (str dark-green
-                      (clojure.string/trim-newline
-                        ((clojure.java.shell/sh "bash" :in "echo $USER") :out))
-                      "@"
-                      end-color
-                      red
-                      (clojure.string/trim-newline
-                        ((clojure.java.shell/sh "hostname" "-s") :out))
-                      end-color
-                      " "
-                      blue
-                      ((clojure.java.shell/sh "pwd") :out)
-                      end-color
-                      blue
-                      ns
-                      end-color
-                      dark-yellow
-                      " => "
-                      end-color)))}
+     :prompt clojusc.shankha/-main}
   :profiles {
     :uber {
       :aot :all}
