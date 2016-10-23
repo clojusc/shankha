@@ -4,7 +4,7 @@
   :license {:name "Apache License, Version 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0"}
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [com.github.jnr/jnr-posix "3.0.30"]]
+                 [com.github.jnr/jnr-posix "3.0.31"]]
   :aot [clojusc.shankha]
   :main clojusc.shankha
   :repl-options
